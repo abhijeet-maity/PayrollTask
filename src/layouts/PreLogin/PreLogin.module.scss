@@ -1,0 +1,25 @@
+.PreLogin {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: pink;
+    font-family: 'Segoe UI';
+
+    .leftSection {
+        width: 46%;
+        height: 100%;
+        background-image: url("../../assets/PreLoginImage.jpg");
+        background-size: cover;
+        background-position: center;
+
+        .textSection {
+            color: White;
+        }
+    }
+
+    .rightSection {
+        width: 54%;
+        height: 100%;
+        background-color: beige;
+    }
+}
