@@ -11,9 +11,22 @@
         background-image: url("../../assets/PreLoginImage.jpg");
         background-size: cover;
         background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
 
         .textSection {
             color: White;
+            margin-bottom: 3.5rem;
+            width: 31rem;
+
+            h2 {
+                font-size: 1.625rem;
+                font-weight: 500;
+            }
+            p {
+                font-size: 0.975rem;
+            }
         }
     }
 
@@ -21,5 +34,8 @@
         width: 54%;
         height: 100%;
         background-color: beige;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
