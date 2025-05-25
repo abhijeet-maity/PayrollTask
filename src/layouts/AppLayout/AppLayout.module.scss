@@ -1,0 +1,29 @@
+.AppLayout {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: yellowgreen;
+
+    .sideNav {
+        width: 16%;
+        height: 100%;
+        padding-left: 1.5rem;
+        background-color: aquamarine;
+
+        .navCard {
+
+            padding: 0.65rem 0rem;
+
+            img {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+        }
+    }
+
+    .rightSide {
+        width: 80%;
+        height: 100%;
+    }
+
+}

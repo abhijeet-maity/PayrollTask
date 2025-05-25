@@ -1,5 +1,5 @@
 export const baseURL = import.meta.env.VITE_API_BASE_URL;
-
+console.log(baseURL);
 
 export const getAccessToken = () => {
     return localStorage.getItem("accessToken");

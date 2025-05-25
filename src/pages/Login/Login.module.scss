@@ -1,28 +1,31 @@
 .LoginPage {
-    width: 28.125rem;
-    height: 30rem;
-    background-color: pink;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    // width: 29rem;
+    border-radius: 8px;
+    padding: 1.2rem;
 
-    .headText {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
+  .headText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 
-        img {
-            width: 60px;
-            height: 60px;
-        }
-
-        h4 {
-            font-size: 19.5px;
-            color:  #343a40;
-            font-weight: 500;
-        }
+    img {
+      width: 3.75rem;
+      height: 3.75rem;
     }
 
-    .inputSection {
-        
-    }
+  }
 
+  .inputSection {
+    padding: 16px;
+    border-radius: 8px;
+    min-width: 300px;
+
+    .button {
+        margin-top: 1rem;
+        padding: 0.65rem;
+    }
+  }
 }
