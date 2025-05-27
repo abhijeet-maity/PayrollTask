@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { publicAPI } from "../services/publicAPI";
+//import { publicR } from "../services/publicAPI";
+import publicRequest from "../services/publicAPI";
 import { LOGIN, LOGINAPI } from "../services/apiURL";
 import toast from "../utils/toast";
 import { setAccessToken } from "../utils/utils";
@@ -14,7 +15,7 @@ export const userLogin = createAsyncThunk(
   "auth/user-login",
   async (payload, { rejectWithValue }) => {
     try {
-      const res = await publicAPI.post(LOGIN, payload);
+      const res = await publicRequest.post(LOGIN, payload);
       if (res?.data?.success) {
         const { accessToken } = res.data.data;
         setAccessToken(accessToken);

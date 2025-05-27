@@ -1,16 +1,16 @@
 import axios from "axios";
-import { baseURL, getAccessToken } from "../utils/utils";
+import {  getAccessToken } from "../utils/utils";
 import toast from "../utils/toast";
 
 export const privateAPI = axios.create({
-  baseURL,
+  baseURL:import.meta.env.VITE_API_BASE_URL,
   timeout: 20000,
 });
 
 //API Request handler
 const requestHandler = (request) => {
   const token = getAccessToken() || "";
-  request.headers.Authorization = `Bearer ${token}`;
+  request.headers.Authorization = `Basic ${token}`;
   return request;
 };
 

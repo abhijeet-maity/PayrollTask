@@ -10,6 +10,8 @@ import { useForm } from "react-hook-form";
 import styles from "./Login.module.scss";
 import logo from "../../assets/FFC-logo.png";
 import { useDispatch } from "react-redux";
+import  { LOGIN } from "../../services/apiURL";
+import publicRequest from "../../services/publicAPI";
 import { userLogin } from "../../reducers/authSlice";
 
 const Login = () => {
@@ -21,13 +23,31 @@ const Login = () => {
 
   const dispatch = useDispatch();
 
-  const onSubmit = async (data) => {
-    console.log(data);
+  // const onSubmit = async (data) => {
+  //   console.log(data);
+  //   try {
+  //     const res = await dispatch(userLogin());
+  //     console.log(res);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const onSubmit = async (values) => {
     try {
-      const res = await dispatch(userLogin());
-      console.log(res);
-    } catch (error) {
-      console.log(error);
+      const res = await publicRequest.post(LOGIN, values);
+      //console.log('res', res.data.userDetail.data.UserId)
+      const combined = `${values.username}:${values.password}`;
+       //console.log('combined', combined)
+      // Base64 encode the combined string
+      const base64Encoded = btoa(combined);
+      //console.log('base64Encoded', base64Encoded)
+      localStorage.setItem("UserId", res.data.userDetail.data.UserId);
+      localStorage.setItem("token", base64Encoded);
+      toast.success("Login Successful");
+      navigate("/dashboard");
+    } catch (err) {
+      toast.error("Error occured in login");
     }
   };
 
@@ -42,16 +62,16 @@ const Login = () => {
       <Box className={styles.inputSection}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <TextField
-            label="Mobile"
+            label="username"
             variant="standard"
             fullWidth
             margin="normal"
-            {...register("mobile", {
-              required: "Mobile is required",
+            {...register("username", {
+              required: "username is required",
             })}
-            error={!!errors.mobile}
+            error={!!errors.username}
             size="medium"
-            helperText={errors.mobile ? errors.mobile.message : ""}
+            helperText={errors.username ? errors.username.message : ""}
             inputProps={{ maxLength: 10, inputMode: "numeric" }}
           />
 
