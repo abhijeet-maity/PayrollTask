@@ -19,7 +19,6 @@ const requestErrorHandler = (error) => {
 };
 
 
-
 //API Response handler
 const responseHandler = (response) => {
   return response;

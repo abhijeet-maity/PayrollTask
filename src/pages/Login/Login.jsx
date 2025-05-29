@@ -11,8 +11,8 @@ import styles from "./Login.module.scss";
 import logo from "../../assets/FFC-logo.png";
 import { useDispatch } from "react-redux";
 import  { LOGIN } from "../../services/apiURL";
-import publicRequest from "../../services/publicAPI";
 import { userLogin } from "../../reducers/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const {
@@ -22,32 +22,18 @@ const Login = () => {
   } = useForm({ mode: "onBlur" });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  // const onSubmit = async (data) => {
-  //   console.log(data);
-  //   try {
-  //     const res = await dispatch(userLogin());
-  //     console.log(res);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  const onSubmit = async (values) => {
+  const onSubmit = async (data) => {
+    console.log(data);
     try {
-      const res = await publicRequest.post(LOGIN, values);
-      //console.log('res', res.data.userDetail.data.UserId)
-      const combined = `${values.username}:${values.password}`;
-       //console.log('combined', combined)
-      // Base64 encode the combined string
-      const base64Encoded = btoa(combined);
-      //console.log('base64Encoded', base64Encoded)
-      localStorage.setItem("UserId", res.data.userDetail.data.UserId);
-      localStorage.setItem("token", base64Encoded);
-      toast.success("Login Successful");
-      navigate("/dashboard");
-    } catch (err) {
-      toast.error("Error occured in login");
+      const res = await dispatch(userLogin(data));
+      console.log(res?.payload);
+      if(res?.payload === true){
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 

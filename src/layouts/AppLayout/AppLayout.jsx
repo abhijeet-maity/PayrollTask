@@ -68,7 +68,7 @@ const AppLayout = () => {
               <span>{currentDate}</span>
             </Box>
             <Button variant="contained">Punch In</Button>
-            <Box className={styles.Profile}></Box>
+            <Button variant="outlined">Logout</Button>
           </Box>
         </Box>
         <Outlet />

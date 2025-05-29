@@ -1,6 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { PATH } from "./utils/pagePath";
 import PublicRoute from "./auth-routes/PublicRoute";
+import PrivateRoute from "./auth-routes/PrivateRoute";
 import Login from "./pages/Login/Login";
 import PreLogin from "./layouts/PreLogin/PreLogin";
 import AppLayout from "./layouts/AppLayout/AppLayout";
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    element: <PublicRoute component={<AppLayout />} />,
+    element: <PrivateRoute component={<AppLayout />} />,
     children: [
       {
         path: PATH.DASHBOARD,
