@@ -18,7 +18,7 @@ const MyTask = () => {
         display={"flex"}
         justifyContent={"space-between"}
         alignItems={"center"}
-        height={"3rem"}
+        height={"4rem"}
         width={"100%"}
         className={styles.actionContainer}
       >
@@ -26,10 +26,12 @@ const MyTask = () => {
         <Box display={"flex"} alignItems={"center"} gap={2}>
           <TextField
             label="Search"
-            variant="standard"
+            variant="outlined"
             value={searchTerm}
             onChange={handleSearchChange}
           />
+          <Button variant="contained">Settings</Button>
+          <Button variant="contained">Export</Button>
         </Box>
       </Box>
       <TaskTable search={debounceSearch} />
