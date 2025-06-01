@@ -4,6 +4,9 @@ import useDebounce from "../../customHooks/useDebounce";
 
 import styles from "./MyTask.module.scss";
 import TaskTable from "./components/TaskTable";
+import AddTaskButtonGroup from "./components/AddTaskButtonGroup";
+import FilterButton from "./components/FilterButton";
+import AppliedFilters from "./components/AppliedFilters";
 
 const MyTask = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,7 +25,8 @@ const MyTask = () => {
         width={"100%"}
         className={styles.actionContainer}
       >
-        <Button variant="contained">Filter</Button>
+        {/* <Button variant="contained">Filter</Button> */}
+        <FilterButton />
         <Box display={"flex"} alignItems={"center"} gap={2}>
           <TextField
             label="Search"
@@ -30,10 +34,12 @@ const MyTask = () => {
             value={searchTerm}
             onChange={handleSearchChange}
           />
+          <AddTaskButtonGroup />
           <Button variant="contained">Settings</Button>
           <Button variant="contained">Export</Button>
         </Box>
       </Box>
+      <AppliedFilters/>
       <TaskTable search={debounceSearch} />
     </Box>
   );

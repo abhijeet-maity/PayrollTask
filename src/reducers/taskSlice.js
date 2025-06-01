@@ -16,7 +16,7 @@ const initialState = {
   totalCount: 0,
   filterData: {},
   loading: false,
-  error: null,
+  hasError: null,
 };
 
 export const fetchTasks = createAsyncThunk(
@@ -33,9 +33,9 @@ export const fetchTasks = createAsyncThunk(
       }
 
       return {
-        tasks: response.data.data.TaskList,
-        comments: response.data.data.CommentList,
-        totalCount: response.data.data.TotalCount,
+        tasks: response?.data?.data?.TaskList || [],
+        comments: response?.data?.data?.CommentList || [],
+        totalCount: response?.data?.data?.TotalCount || 0,
       };
     } catch (error) {
       console.log(error);
@@ -98,52 +98,65 @@ const taskSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+
+    //---------------- GET ALL THE TASKS --------------------
       .addCase(fetchTasks.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.hasError = null;
       })
       .addCase(fetchTasks.fulfilled, (state, action) => {
         state.loading = false;
+        state.hasError = null;
         state.tasks = action.payload.tasks;
         state.comments = action.payload.comments;
         state.totalCount = action.payload.totalCount;
       })
       .addCase(fetchTasks.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.hasError = action.error.message;
       })
+
+
+    //--------------------- ADD TASK STATUS ---------------------
       .addCase(addTask.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.hasError = null;
       })
       .addCase(addTask.fulfilled, (state) => {
         state.loading = false;
+        state.hasError = null;
       })
       .addCase(addTask.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.hasError = action.error.message;
       })
+
+    //------------------- DELETE TASK STATUS -----------------
       .addCase(deleteTask.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.hasError = null;
       })
       .addCase(deleteTask.fulfilled, (state) => {
         state.loading = false;
+        state.hasError = null;
       })
       .addCase(deleteTask.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.hasError = action.error.message;
       })
+
+    //---------------- UPDATE TASK STATUS -------------------------
       .addCase(updateTaskStatus.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.hasError = null;
       })
       .addCase(updateTaskStatus.fulfilled, (state) => {
         state.loading = false;
+        state.hasError = null;
       })
       .addCase(updateTaskStatus.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.hasError = action.error.message;
       });
   },
 });
