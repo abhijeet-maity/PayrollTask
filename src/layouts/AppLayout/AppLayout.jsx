@@ -3,11 +3,29 @@ import styles from "./AppLayout.module.scss";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { sidenavbar } from "../../utils/sidenavbar";
 import { Outlet, useNavigate } from "react-router-dom";
+import { removeToken } from "../../utils/utils";
+import toast from "../../utils/toast";
 
 const AppLayout = () => {
   const navigate = useNavigate();
   const [currentTime, setCurrentTime] = useState("");
   const [currentDate, setCurrentDate] = useState("");
+  const [punchedIn, setPunchedIn] = useState(false);
+
+  const handleLogout = () => {
+    removeToken();
+    toast.success("Logged out successfully");
+    window.location.reload();
+  };
+
+  const punchInPunchOut = () => {
+    setPunchedIn((prev) => !prev);
+    if (!punchedIn) {
+      toast.success("Punched in Successfull");
+    } else {
+      toast.success("Punch out successfull");
+    }
+  };
 
   useEffect(() => {
     const updateDateTime = () => {
@@ -67,8 +85,16 @@ const AppLayout = () => {
               {" | "}
               <span>{currentDate}</span>
             </Box>
-            <Button variant="contained">Punch In</Button>
-            <Button variant="contained" color="error">Logout</Button>
+
+            {punchedIn ? (
+              <Button onClick={punchInPunchOut} variant="outlined">Punch out</Button>
+            ) : (
+              <Button onClick={punchInPunchOut} variant="contained">Punch In</Button>
+            )}
+
+            <Button onClick={handleLogout} variant="contained" color="error">
+              Logout
+            </Button>
           </Box>
         </Box>
         <Outlet />

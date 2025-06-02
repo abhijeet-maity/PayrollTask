@@ -18,8 +18,8 @@ import {
 import dayjs from "dayjs";
 import { getStatus } from "../../../utils/utils";
 import DataTable from "react-data-table-component";
-import PartialCompleteModal from "./PartialCompleteModal";
-import ConfirmModal from "../../../components/CommonComponents/ConfirmModal";
+import PartialCompleteModal from "./PartialCompleteModal";//Partial complete task
+import ConfirmModal from "../../../components/CommonComponents/ConfirmModal";//For Deletion 
 
 const DEFAULT_PAGE_NO = 0;
 const rowsPerPage = [10, 25, 50, 100];
@@ -33,7 +33,7 @@ const TaskTable = ({ search }) => {
   const [sortModel, setSortModel] = useState([]);
   const [isPartialTaskModalOpen, setIsPartialTaskModalOpen] = useState(false);
   const [paginationModel, setPaginationModel] = useState({
-    pageSize: rowsPerPage[0],
+    pageSize: rowsPerPage[0], 
     page: DEFAULT_PAGE_NO,
   });
 

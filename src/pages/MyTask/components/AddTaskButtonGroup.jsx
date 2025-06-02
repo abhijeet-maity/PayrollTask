@@ -187,8 +187,8 @@ const AddTaskButtonGroup = () => {
               {...register("Title", {
                 required: "Title is required",
                 pattern: {
-                  value: /^[A-Za-z]+$/,
-                  message: "Title should contain alphabets only",
+                value: /^[A-Za-z\s]+$/,
+                message: "Title should contain alphabets only",
                 },
               })}
               error={!!errors.Title}
