@@ -34,10 +34,7 @@ const MemberList = ({ open, handleClose, setcheckedMembers }) => {
   const [page, setPage] = useState(1);
   const debounceSearch = useDebounce(searchTerm, 1000);
   const dispatch = useDispatch();
-  //   const { members, fetchMoreMembers, loading } = useMembers(
-  //     debounceSearch,
-  //     1000
-  //   );
+
 
   const { members, isLoading } = useSelector((state) => state.members);
 
@@ -52,16 +49,6 @@ const MemberList = ({ open, handleClose, setcheckedMembers }) => {
       console.log(error);
     }
   };
-
-  const handleScroll = throttle(() => {
-    if (containerRef.current) {
-      const { scrollTop, scrollHeight, clientHeight } = containerRef.current;
-      if (scrollTop + clientHeight >= scrollHeight - 10) {
-        // setPage((prev) => prev + 9 );
-        fetchMembers();
-      }
-    }
-  }, 200);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -103,10 +90,6 @@ const MemberList = ({ open, handleClose, setcheckedMembers }) => {
 
         <div
           style={{ maxHeight: 300, overflowY: "auto", marginTop: 10 }}
-          onScroll={() => {
-            setPage((prev) => prev + 9);
-            handleScroll();
-          }} // Attach the scroll handler here
           ref={containerRef}
         >
           {members.map((member) => (

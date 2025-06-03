@@ -6,5 +6,5 @@ export const DELETE_TASK = "/Task/DeleteTask"
 export const UPDATE_TASK_STATUS = "/Task/UpdateTaskStatus"
 export const GET_ALL_LEADS = "/CRM/Leads";
 export const CC_Members = (start, search) => {
-    return `/CompanyMembers?from=${start}&text=${search}&to=${start + 9}`;
+    return `/CompanyMembers?from=${start}&text=${search}&to=${start + 70}`;
 };

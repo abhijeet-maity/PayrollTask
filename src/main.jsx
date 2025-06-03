@@ -8,11 +8,9 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Provider store={store}>
         <App />
       </Provider>
     </LocalizationProvider>
-  </StrictMode>
 );
