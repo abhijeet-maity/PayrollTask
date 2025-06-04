@@ -32,8 +32,18 @@ const FilterButton = () => {
     setDialogOpen(false);
   };
 
-  const setMembers = (memberIds) => {
-    if (membersModalOpen) setValue("UserIds", memberIds);
+  // const setMembers = (memberIds) => {
+  //   if (membersModalOpen) {
+  //     console.log(memberIds);
+  //     setValue("UserIds", memberIds);
+  //   }
+  // };
+
+  const setMembers = (members) => {
+    if (membersModalOpen) {
+      const userIds = members.map((member) => member.UserId.toString()); // Extract only IDs
+      setValue("UserIds", userIds);
+    }
   };
 
   const onSubmit = (value) => {
@@ -70,7 +80,7 @@ const FilterButton = () => {
             options={priorityOptions}
           />
 
-          <TextField
+          {/* <TextField
             label="By Members"
             value={
               watch("UserIds")
@@ -85,7 +95,25 @@ const FilterButton = () => {
             InputProps={{
               readOnly: true,
             }}
+          /> */}
+
+          <TextField
+            label="By Members"
+            value={
+              Array.isArray(watch("UserIds")) && watch("UserIds").length > 0
+                ? `${watch("UserIds").length} Users`
+                : ""
+            }
+            onClick={() => setMembersModalOpen(true)}
+            margin="normal"
+            size="small"
+            variant="standard"
+            fullWidth
+            InputProps={{
+              readOnly: true,
+            }}
           />
+
           <MemberList
             open={membersModalOpen}
             handleClose={() => setMembersModalOpen(false)}

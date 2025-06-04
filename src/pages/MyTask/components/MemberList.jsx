@@ -31,7 +31,7 @@ const MemberList = ({ open, handleClose, setcheckedMembers }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedMembers, setSelectedMembers] = useState([]);
   const containerRef = useRef(null);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const debounceSearch = useDebounce(searchTerm, 1000);
   const dispatch = useDispatch();
 

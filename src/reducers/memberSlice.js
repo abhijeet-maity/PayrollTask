@@ -70,7 +70,7 @@ const memberSlice = createSlice({
       .addCase(getCCMembers.fulfilled, (state, action) => {
         state.isLoading = false;
         state.hasError = false;
-        state.members = [...state.members, ...action.payload];
+        state.members = action.payload;
       })
       .addCase(getCCMembers.rejected, (state) => {
         state.isLoading = false;

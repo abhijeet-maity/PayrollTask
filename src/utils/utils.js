@@ -69,10 +69,10 @@ export const priorityOptions = [
 
 export const statusOptions = [
   { label: "All", value: "" },
-  { label: "Not Accepted", value: "Not Accepted" },
-  { label: "Partial Complete", value: "Partial Complete" },
-  { label: "Accepted", value: "Accepted" },
-  { label: "Completed", value: "Completed" },
+  { label: "Not Accepted", value: "-1" },
+  { label: "Partial Complete", value: "-2" },
+  { label: "Accepted", value: "0" },
+  { label: "Completed", value: "100" },
 ];
 
 export const defaultTaskPayload = {
