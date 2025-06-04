@@ -40,3 +40,16 @@
         align-items: center;
     }
 }
+
+
+@media screen and (max-width: "668px"){
+    .PreLogin {
+        .leftSection {
+            display: none;
+        }
+        .rightSection {
+            width: 100%;
+            overflow-y: hidden;
+        }
+    }
+}

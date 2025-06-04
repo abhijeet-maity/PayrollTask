@@ -5,6 +5,7 @@ import { sidenavbar } from "../../utils/sidenavbar";
 import { Outlet, useNavigate } from "react-router-dom";
 import { removeToken } from "../../utils/utils";
 import toast from "../../utils/toast";
+import MenuIcon from '@mui/icons-material/Menu';
 
 const AppLayout = () => {
   const navigate = useNavigate();
