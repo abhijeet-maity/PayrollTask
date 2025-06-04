@@ -21,7 +21,7 @@ export const userLogin = createAsyncThunk(
         const base64Encoded = btoa(combined);
         // const referralToken = res?.data?.referralToken;
         setAccessToken(base64Encoded);
-        localStorage.setItem("UserId", res.data.userDetail.data.UserId);
+        localStorage.setItem("UserId", res?.data?.userDetail?.data?.UserId);
         toast.success(res?.statusText || "Login successful");
         return true;
       } else {

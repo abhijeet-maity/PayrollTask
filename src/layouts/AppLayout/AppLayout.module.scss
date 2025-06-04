@@ -1,48 +1,53 @@
 .AppLayout {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  // background-color: yellowgreen;
+
+  .sideNav {
+    width: 16%;
+    height: 100%;
+    // background-color: aquamarine;
+    background-color: azure;
     display: flex;
-    // background-color: yellowgreen;
+    flex-direction: column;
+    gap: 0.3rem;
 
-    .sideNav {
-        width: 16%;
-        height: 100%;
-        padding-left: 1.5rem;
-        // background-color: aquamarine;
-        background-color: azure;
+    .navCard {
+      padding: 0.65rem 0rem;
+      padding-left: 1.5rem;
+      cursor: pointer;
 
-        .navCard {
+      img {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
 
-            padding: 0.65rem 0rem;
-            cursor: pointer;
-
-            img {
-                width: 1.25rem;
-                height: 1.25rem;
-            }
-        }
+      &:hover {
+        background-color: lightgray;
+        border-radius: 4px;
+      }
     }
+  }
 
-    .rightSide {
-        width: 84%;
-        height: 100%;
-        // background-color: yellow;
+  .rightSide {
+    width: 84%;
+    height: 100%;
+    // background-color: yellow;
 
-        .Navbar {
-            height: 3.5rem;
-            width: 100%;
-            // background-color: pink;
-            padding: 0 2rem;
-            border-bottom: 1px solid black;
+    .Navbar {
+      height: 3.5rem;
+      width: 100%;
+      // background-color: pink;
+      padding: 0 2rem;
+      border-bottom: 1px solid black;
 
-
-            .Profile {
-                width: 2.5rem;
-                height: 2.5rem;
-                border-radius: 50%;
-                background-color: red;
-            }
-        }
+      .Profile {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background-color: red;
+      }
     }
-
+  }
 }

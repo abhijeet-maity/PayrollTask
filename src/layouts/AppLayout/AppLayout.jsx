@@ -54,6 +54,8 @@ const AppLayout = () => {
 
   return (
     <div className={styles.AppLayout}>
+
+      {/* LEFT SIDE SIDE NAVIGATION */}
       <Stack className={styles.sideNav}>
         {sidenavbar.map((menu, index) => {
           return (
@@ -71,6 +73,8 @@ const AppLayout = () => {
           );
         })}
       </Stack>
+
+      {/* RIGHT SIDE SECTION */}
       <Box className={styles.rightSide}>
         <Box
           display={"flex"}
