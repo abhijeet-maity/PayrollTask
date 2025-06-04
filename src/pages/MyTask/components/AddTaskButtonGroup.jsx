@@ -45,9 +45,15 @@ const AddTaskButtonGroup = () => {
     setValue,
     watch,
     formState: { errors, isSubmitting },
-  } = useForm({ mode: "onBlur" });
+  } = useForm({
+    mode: "onBlur",
+    defaultValues: {
+      priority: "", // or 'Low' or 'High', depending on your logic
+      // Add other form fields here if needed
+    },
+  });
 
-  const {leads, isLoading} = useSelector((state) => state.members )
+  const { leads, isLoading } = useSelector((state) => state.members);
 
   const handleTabChange = (event, newIndex) => {
     setTabIndex(newIndex);
@@ -80,7 +86,7 @@ const AddTaskButtonGroup = () => {
   const onSubmit = async (data) => {
     console.log(data);
     try {
-      const res = await dispatch(addTask({...data, file}));
+      const res = await dispatch(addTask({ ...data, file }));
       console.log(res);
     } catch (error) {
       console.log(error);
@@ -187,8 +193,8 @@ const AddTaskButtonGroup = () => {
               {...register("Title", {
                 required: "Title is required",
                 pattern: {
-                value: /^[A-Za-z\s]+$/,
-                message: "Title should contain alphabets only",
+                  value: /^[A-Za-z\s]+$/,
+                  message: "Title should contain alphabets only",
                 },
               })}
               error={!!errors.Title}

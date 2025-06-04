@@ -8,6 +8,7 @@ const CustomSelect = ({ name, label, control, options = []}) => {
       <Controller
         name={name}
         control={control}
+        defaultValue=""
         render={({ field }) => (
           <Select {...field} variant="standard">
             {options.map((option) => (
