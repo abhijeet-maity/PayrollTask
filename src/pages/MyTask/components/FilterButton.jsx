@@ -8,6 +8,7 @@ import { priorityOptions, statusOptions } from "../../../utils/utils";
 import { Controller, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setFilterData } from "../../../reducers/taskSlice";
+import dayjs from "dayjs";
 
 const FilterButton = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -48,9 +49,16 @@ const FilterButton = () => {
 
   const onSubmit = (value) => {
     console.log(value);
-    dispatch(setFilterData(value));
+    const formattedData = {
+      ...value,
+      FromDueDate: dayjs(value.FromDueDate).format("MM/DD/YYYY"),
+      ToDueDate: dayjs(value.ToDueDate).format("MM/DD/YYYY"),
+    };
+    console.log(formattedData);
+    dispatch(setFilterData(formattedData));
     handleClose();
-    reset();
+
+    // reset();
   };
 
   return (
@@ -129,7 +137,7 @@ const FilterButton = () => {
                   <DatePicker
                     {...field}
                     label="From Due Date"
-                    format="DD MMM YYYY"
+                    format="MM DD YYYY"
                     sx={{ flex: 1 }}
                     slotProps={{ textField: { variant: "standard" } }}
                   />
@@ -144,7 +152,7 @@ const FilterButton = () => {
                   <DatePicker
                     {...field}
                     label="To Due Date"
-                    format="DD MMM YYYY"
+                    format="MM DD YYYY"
                     sx={{ flex: 1 }}
                     slotProps={{ textField: { variant: "standard" } }}
                   />

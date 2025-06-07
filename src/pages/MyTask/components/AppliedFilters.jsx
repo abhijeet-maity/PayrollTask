@@ -28,8 +28,7 @@ const AppliedFilters = () => {
     }
   };
 
-  return (
-    Object.values(filters).length > 0 ? (
+  return Object.values(filters).length > 0 ? (
     <Box
       sx={{
         p: 2,
@@ -41,51 +40,55 @@ const AppliedFilters = () => {
         gap: 2,
       }}
     >
-        <Stack direction="row" flexWrap="wrap" gap={1}>
-          {filters[TASKSTATUS] && (
-            <Chip
-              label={`Status: ${filters[TASKSTATUS]}`}
-              onDelete={() => handleClearFilters(TASKSTATUS)}
-              color="primary"
-              variant="outlined"
-            />
-          )}
-          {filters[PRIORITY] && (
-            <Chip
-              label={`Priority: ${filters[PRIORITY]}`}
-              onDelete={() => handleClearFilters(PRIORITY)}
-              color="secondary"
-              variant="outlined"
-            />
-          )}
-          {filters[USERIDS]?.length > 0 && (
-            <Chip
-              label={`Members: ${filters[USERIDS]?.length}`}
-              onDelete={() => handleClearFilters(USERIDS)}
-              color="success"
-              variant="outlined"
-            />
-          )}
-          {filters[FROMDUEDATE] && filters[TODUEDATE] && (
-            <Chip
-              label={`From ${dayjs(filters[FROMDUEDATE]).format("DD MMM YYYY")} To ${dayjs(filters[TODUEDATE]).format("DD MMM YYYY")}`}
-              onDelete={() => handleClearFilters("date")}
-              color="warning"
-              variant="outlined"
-            />
-          )}
+      <Stack direction="row" flexWrap="wrap" gap={1}>
+        {filters[TASKSTATUS] && (
+          <Chip
+            label={`Status: ${filters[TASKSTATUS]}`}
+            onDelete={() => handleClearFilters(TASKSTATUS)}
+            color="primary"
+            variant="outlined"
+          />
+        )}
+        {filters[PRIORITY] && (
+          <Chip
+            label={`Priority: ${filters[PRIORITY]}`}
+            onDelete={() => handleClearFilters(PRIORITY)}
+            color="secondary"
+            variant="outlined"
+          />
+        )}
+        {filters[USERIDS]?.length > 0 && (
+          <Chip
+            label={`Members: ${filters[USERIDS]?.length}`}
+            onDelete={() => handleClearFilters(USERIDS)}
+            color="success"
+            variant="outlined"
+          />
+        )}
+        {filters[FROMDUEDATE] && filters[TODUEDATE] && (
+          <Chip
+            label={`From ${dayjs(filters[FROMDUEDATE]).format(
+              "DD MMM YYYY"
+            )} To ${dayjs(filters[TODUEDATE]).format("DD MMM YYYY")}`}
+            onDelete={() => handleClearFilters("date")}
+            color="warning"
+            variant="outlined"
+          />
+        )}
 
-          <Button
-            variant="contained"
-            color="error"
-            size="small"
-            onClick={() => handleClearFilters("all")}
-          >
-            Clear Filter
-          </Button>
-        </Stack>
-    </Box>) : null
-  );
+        <Button
+          variant="contained"
+          color="error"
+          size="small"
+          onClick={() => {
+            handleClearFilters("all");
+          }}
+        >
+          Clear Filter
+        </Button>
+      </Stack>
+    </Box>
+  ) : null;
 };
 
 export default AppliedFilters;

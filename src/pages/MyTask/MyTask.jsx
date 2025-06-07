@@ -26,7 +26,7 @@ const MyTask = () => {
         className={styles.actionContainer}
       >
         {/* <Button variant="contained">Filter</Button> */}
-        <FilterButton />
+        <FilterButton  />
         <Box display={"flex"} alignItems={"center"} gap={2}>
           <TextField
             label="Search"
